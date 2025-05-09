@@ -55,14 +55,22 @@
                 const [state, context] = stateWithContext.split('%7C');
                 const decodedContext = decodeURIComponent(context);
                 console.log("What is the context?", decodedContext);
-            }
-            if (hashFragment) {
+                if (hashFragment) {
+                    hashFragment = hashFragment.replace('access_token', 'at_twitch');
+                    hashFragment = hashFragment.replace('id_token', 'id_twitch');
+                    hashFragment = hashFragment.replace('scope', 'sc_twitch');
+                    hashFragment = hashFragment.replace('state', 'st_twitch');
+                    
+                    if (context) {
+                        // Redirect back to the original site with the auth fragment
+                        window.location.href = `${context}?${hashFragment}`;
+                    }
+                }
+            
+           
 
             
-                if (context) {
-                    // Redirect back to the original site with the auth fragment
-                    window.location.href = `${context}`;
-                }
+             
                // localStorage.setItem('twitch_auth_fragment', hashFragment);
                // const redirectUri = localStorage.getItem('twitch_redirect_uri');
                 
