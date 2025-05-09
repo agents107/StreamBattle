@@ -46,14 +46,13 @@
             const hashFragment = window.location.hash.substring(1);
             // Get the additional parameter from the query string
             const urlParams = new URLSearchParams(window.location.search);
-            const context = urlParams.get('context');
+            
             if (hashFragment) {
     
                 localStorage.setItem('twitch_auth_fragment', hashFragment);
-                localStorage.setItem('twitch_auth_context', context);
-                if (context) {
-                    window.location.href = context;
-                }
+                const redirectUri = localStorage.getItem('twitch_redirect_uri');
+                window.location.href = redirectUri;
+                
                 
                 // Check if we have access to the opener window
                 /*if (window.opener && !window.opener.closed) {
