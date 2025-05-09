@@ -66,17 +66,11 @@
                     setTimeout(function() {
                         window.close();
                     }, 1500);*/
-                } else {
-                    // If opener is not available, provide instructions
-                    document.querySelector('.status').textContent = 
-                        'Authentication complete, but we could not communicate with the main window. ' +
-                        'Please close this window and return to the app.';
-                }
             } else {
-                // No hash fragment found, likely an error
+                // If opener is not available, provide instructions
                 document.querySelector('.status').textContent = 
-                    'No authentication data found. There might have been an error. ' +
-                    'Please close this window and try again.';
+                    'Authentication complete, no hash fragment found. ' +
+                    'Please reload the game.';
             }
         }
 
