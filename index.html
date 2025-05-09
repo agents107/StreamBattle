@@ -48,11 +48,18 @@
             const urlParams = new URLSearchParams(window.location.search);
             
             if (hashFragment) {
-    
-                localStorage.setItem('twitch_auth_fragment', hashFragment);
-                const redirectUri = localStorage.getItem('twitch_redirect_uri');
-                console.log("What is the redirect uri?", redirectUri);
-                window.location.href = redirectUri;
+                const cookies = document.cookie.split(';');
+                const redirectCookie = cookies.find(cookie => cookie.trim().startsWith('twitch_redirect_uri='));
+                const context = redirectCookie ? decodeURIComponent(redirectCookie.split('=')[1]) : null;
+                console.log("What is the redirect uri?", context);
+                if (context) {
+                    // Redirect back to the original site with the auth fragment
+                    window.location.href = `${context}`;
+                }
+               // localStorage.setItem('twitch_auth_fragment', hashFragment);
+               // const redirectUri = localStorage.getItem('twitch_redirect_uri');
+                
+               // window.location.href = redirectUri;
                 
                 
                 // Check if we have access to the opener window
