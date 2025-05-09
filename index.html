@@ -63,7 +63,7 @@
                     
                     if (decodedContext) {
                         // Redirect back to the original site with the auth fragment
-                        window.location.href = `${decodedContext}?${hashFragment}`;
+                        window.location.href = `${decodedContext}#${hashFragment}`;
                     }
                 }
             
