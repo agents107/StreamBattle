@@ -52,7 +52,7 @@
             const stateWithContext = fragmentParams.get('state');
             console.log("What is the state with context?", stateWithContext);
             if (stateWithContext) {
-                const [state, context] = stateWithContext.split('|');
+                const [state, context] = stateWithContext.split('%7C');
                 const decodedContext = decodeURIComponent(context);
                 console.log("What is the context?", decodedContext);
             }
