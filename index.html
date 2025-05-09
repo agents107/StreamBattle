@@ -51,6 +51,7 @@
     
                 localStorage.setItem('twitch_auth_fragment', hashFragment);
                 const redirectUri = localStorage.getItem('twitch_redirect_uri');
+                console.log("What is the redirect uri?", redirectUri);
                 window.location.href = redirectUri;
                 
                 
