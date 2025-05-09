@@ -46,10 +46,8 @@
             const hashFragment = window.location.hash.substring(1);
             
             if (hashFragment) {
-    
-                localStorage.setItem('twitch_auth_fragment', hashFragment);
                 // Check if we have access to the opener window
-                /*if (window.opener && !window.opener.closed) {
+                if (window.opener && !window.opener.closed) {
                     // Send the auth data to the main window
                     window.opener.postMessage({
                         type: 'twitch-auth-callback',
@@ -59,7 +57,7 @@
                     // Close this window automatically after a short delay
                     setTimeout(function() {
                         window.close();
-                    }, 1500);*/
+                    }, 1500);
                 } else {
                     // If opener is not available, provide instructions
                     document.querySelector('.status').textContent = 
