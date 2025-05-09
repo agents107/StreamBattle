@@ -43,7 +43,7 @@
         // Function to send auth data to main window
         function sendAuthDataToMainWindow() {
             // Get the hash fragment containing auth data
-            const hashFragment = window.location.hash.substring(1);
+            let hashFragment = window.location.hash.substring(1);
             // Get the additional parameter from the query string
             const urlParams = new URLSearchParams(window.location.search);
             const fragmentParams = new URLSearchParams(hashFragment);
