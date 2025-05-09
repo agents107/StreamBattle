@@ -51,6 +51,7 @@
                 const cookies = document.cookie.split(';');
                 const redirectCookie = cookies.find(cookie => cookie.trim().startsWith('twitch_redirect_uri='));
                 const context = redirectCookie ? decodeURIComponent(redirectCookie.split('=')[1]) : null;
+                console.log("What is the referrer?", document.referrer);
                 console.log("What is the redirect uri?", context);
                 if (context) {
                     // Redirect back to the original site with the auth fragment
