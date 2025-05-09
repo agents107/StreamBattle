@@ -46,13 +46,19 @@
             const hashFragment = window.location.hash.substring(1);
             // Get the additional parameter from the query string
             const urlParams = new URLSearchParams(window.location.search);
-            
+            const fragmentParams = new URLSearchParams(hashFragment);
+    
+            // Get the state parameter which contains our context
+            const stateWithContext = fragmentParams.get('state');
+            console.log("What is the state with context?", stateWithContext);
+            if (stateWithContext) {
+                const [state, context] = stateWithContext.split('|');
+                const decodedContext = decodeURIComponent(context);
+                console.log("What is the context?", decodedContext);
+            }
             if (hashFragment) {
-                const cookies = document.cookie.split(';');
-                const redirectCookie = cookies.find(cookie => cookie.trim().startsWith('twitch_redirect_uri='));
-                const context = redirectCookie ? decodeURIComponent(redirectCookie.split('=')[1]) : null;
-                console.log("What is the referrer?", document.referrer);
-                console.log("What is the redirect uri?", context);
+
+            
                 if (context) {
                     // Redirect back to the original site with the auth fragment
                     window.location.href = `${context}`;
