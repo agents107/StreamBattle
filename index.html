@@ -61,9 +61,9 @@
                     hashFragment = hashFragment.replace('scope', 'sc_twitch');
                     hashFragment = hashFragment.replace('state', 'st_twitch');
                     
-                    if (context) {
+                    if (decodedContext) {
                         // Redirect back to the original site with the auth fragment
-                        window.location.href = `${context}?${hashFragment}`;
+                        window.location.href = `${decodedContext}?${hashFragment}`;
                     }
                 }
             
