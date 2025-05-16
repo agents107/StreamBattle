@@ -62,8 +62,10 @@
                     hashFragment = hashFragment.replace('state', 'st_twitch');
                     
                     if (decodedContext) {
+                        // Check if decodedContext already has query parameters
+                        const separator = decodedContext.includes('?') ? '&' : '?';
                         // Redirect back to the original site with the auth fragment
-                        window.location.href = `${decodedContext}?${hashFragment}`;
+                        window.location.href = `${decodedContext}${separator}${hashFragment}`;
                     }
                 }
             
